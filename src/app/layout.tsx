@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import type { Metadata } from 'next'
 import './globals.css'
 
@@ -11,9 +12,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang='en'>
       <body className='min-h-screen bg-zinc-50 text-zinc-900 antialiased'>
         <div className='mx-auto max-w-3xl px-4 py-10'>
-          <header className='mb-10'>
+          <header className='mb-10 space-y-4'>
             <h1 className='text-3xl font-bold tracking-tight'>Blowviate</h1>
             <p className='text-zinc-600'>Ideas and notes from blowviate.com</p>
+            <nav className='flex gap-4 text-sm text-zinc-600'>
+              <Link href='/' className='transition hover:text-zinc-900'>
+                Home
+              </Link>
+              <Link href='/hub' className='transition hover:text-zinc-900'>
+                Hub Gallery
+              </Link>
+            </nav>
           </header>
           <main>{children}</main>
           <footer className='mt-16 text-sm text-zinc-500'>

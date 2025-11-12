@@ -8,7 +8,8 @@ const eslintConfig = defineConfig([
   globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts']),
   {
     rules: {
-      semi: ['error', 'never']
+      semi: ['error', 'never'],
+      '@next/next/no-img-element': 'off'
     }
   }
 ])
