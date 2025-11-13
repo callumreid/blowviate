@@ -1,13 +1,33 @@
 import Link from "next/link";
 import { getDailyEntries, formatDate } from "@/lib/daily";
+import Image from "next/image";
 
 export default async function Page() {
   const entries = await getDailyEntries();
 
   return (
     <div className="space-y-8 text-center">
-      <h1 className="text-3xl font-bold">daily double</h1>
-      <p className="text-zinc-600">baow baow baowwwwwwwwww</p>
+      <h1 className="text-3xl font-bold flex items-center justify-center gap-2">
+        <Image
+          src="/trebek.png"
+          alt="trebek"
+          width={32}
+          height={32}
+          className="w-8 h-8"
+        />
+        daily double
+        <Image
+          src="/trebek.png"
+          alt="trebek"
+          width={32}
+          height={32}
+          className="w-8 h-8"
+        />
+      </h1>
+      <p className="text-zinc-600">answer there - OUR DAILY DOUBLE!</p>
+      <p className="text-xs font-bold italic text-zinc-600">
+        baow baow baowwwwwwwwww
+      </p>
 
       {entries.length > 0 ? (
         <div className="space-y-3">

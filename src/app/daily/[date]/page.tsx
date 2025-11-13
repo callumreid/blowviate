@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { remark } from "remark";
+import remarkGfm from "remark-gfm";
+import html from "remark-html";
 import { getDailyEntryByDate, getDailyEntries, formatDate } from "@/lib/daily";
 import { notFound } from "next/navigation";
 
@@ -21,6 +24,12 @@ export default async function Page({
     notFound();
   }
 
+  const processedContent = await remark()
+    .use(remarkGfm)
+    .use(html)
+    .process(entry.content);
+  const contentHtml = processedContent.toString();
+
   return (
     <div className="space-y-8 text-center">
       <div className="space-y-4">
@@ -33,13 +42,10 @@ export default async function Page({
         <h1 className="text-3xl font-bold">{formatDate(entry.date)}</h1>
       </div>
 
-      <article className="prose prose-sm max-w-none text-center">
-        {entry.content.split("\n\n").map((paragraph, i) => (
-          <p key={i} className="text-zinc-700">
-            {paragraph}
-          </p>
-        ))}
-      </article>
+      <article
+        className="prose prose-zinc prose-sm mx-auto max-w-none text-left"
+        dangerouslySetInnerHTML={{ __html: contentHtml }}
+      />
     </div>
   );
 }

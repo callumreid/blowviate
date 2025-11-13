@@ -52,7 +52,6 @@ export default function Page() {
   return (
     <div className="space-y-8 text-center">
       <h1 className="text-3xl font-bold">what's clackin'?</h1>
-      <p className="text-zinc-600">projects and things i'm working on.</p>
 
       <div className="space-y-4">
         {projects.map((project) => (
