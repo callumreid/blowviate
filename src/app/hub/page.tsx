@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { getHubImages } from '@/lib/hubImages'
 
+export const dynamic = 'force-static'
+export const runtime = 'nodejs'
+
 export const metadata: Metadata = {
   title: 'Hub Images • Blowviate',
   description: 'A gallery of every Hub image featured on blowviate.com.'
