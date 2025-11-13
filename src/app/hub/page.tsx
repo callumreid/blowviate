@@ -5,8 +5,8 @@ export const dynamic = 'force-static'
 export const runtime = 'nodejs'
 
 export const metadata: Metadata = {
-  title: 'Hub Images • Blowviate',
-  description: 'A gallery of every Hub image featured on blowviate.com.'
+  title: 'hub images • blowviate',
+  description: 'a gallery of every hub image featured on blowviate.com.'
 }
 
 export default async function HubPage() {
@@ -14,11 +14,11 @@ export default async function HubPage() {
   return (
     <div className='space-y-6'>
       <header className='space-y-2'>
-        <h1 className='text-3xl font-semibold tracking-tight'>Hub Gallery</h1>
-        <p className='text-sm text-zinc-600'>All the Hub visuals collected in one place.</p>
+        <h1 className='text-3xl font-semibold tracking-tight'>hub gallery</h1>
+        <p className='text-sm text-zinc-600'>all the hub visuals collected in one place.</p>
       </header>
       {images.length === 0 ? (
-        <p className='text-sm text-zinc-600'>No images found.</p>
+        <p className='text-sm text-zinc-600'>no images found.</p>
       ) : (
         <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
           {images.map(image => {

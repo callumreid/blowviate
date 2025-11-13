@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const post = await getPostBySlug(params.slug).catch(() => null)
   if (!post) return {}
   return {
-    title: `${post.meta.title} • My Blog`,
+    title: `${post.meta.title} • blowviate`,
     description: post.meta.summary ?? ''
   }
 }
