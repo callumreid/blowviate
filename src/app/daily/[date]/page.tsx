@@ -5,6 +5,9 @@ import html from "remark-html";
 import { getDailyEntryByDate, getDailyEntries, formatDate } from "@/lib/daily";
 import { notFound } from "next/navigation";
 
+export const dynamicParams = true;
+export const revalidate = 0;
+
 export async function generateStaticParams() {
   const entries = await getDailyEntries();
   return entries.map((entry) => ({

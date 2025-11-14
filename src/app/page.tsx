@@ -2,6 +2,8 @@ import Link from "next/link";
 import { getHubImages } from "@/lib/hubImages";
 import { getLatestDailyEntry, formatDate } from "@/lib/daily";
 
+export const revalidate = 0;
+
 export default async function Page() {
   const hubImages = await getHubImages();
   const gallery = hubImages.slice(0, 6);

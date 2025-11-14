@@ -2,6 +2,8 @@ import Link from "next/link";
 import { getDailyEntries, formatDate } from "@/lib/daily";
 import Image from "next/image";
 
+export const revalidate = 0;
+
 export default async function Page() {
   const entries = await getDailyEntries();
 

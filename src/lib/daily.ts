@@ -44,12 +44,13 @@ export async function getDailyEntryByDate(date: string): Promise<DailyEntry | nu
 
 export function formatDate(dateString: string): string {
   const [year, month, day] = dateString.split('-')
-  const date = new Date(`${year}-${month}-${day}T00:00:00Z`)
+  const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day))
   return date.toLocaleDateString('en-US', {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
+    timeZone: 'UTC'
   }).toLowerCase()
 }
 
