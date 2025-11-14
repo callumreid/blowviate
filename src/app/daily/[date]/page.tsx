@@ -4,6 +4,7 @@ import remarkGfm from "remark-gfm";
 import html from "remark-html";
 import { getDailyEntryByDate, getDailyEntries, formatDate } from "@/lib/daily";
 import { notFound } from "next/navigation";
+import CommentSection from "@/components/CommentSection";
 
 export const dynamicParams = true;
 export const revalidate = 0;
@@ -49,6 +50,8 @@ export default async function Page({
         className="prose prose-zinc prose-sm mx-auto max-w-none text-left"
         dangerouslySetInnerHTML={{ __html: contentHtml }}
       />
+      
+      <CommentSection date={entry.date} />
     </div>
   );
 }
