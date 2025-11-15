@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react'
 
 interface Comment {
   id: string
-  dailyDate: string
+  daily_date: string
   username: string
   content: string
-  timestamp: string
+  created_at: string
 }
 
 export default function CommentSection({ date }: { date: string }) {
@@ -71,7 +71,7 @@ export default function CommentSection({ date }: { date: string }) {
       year: 'numeric',
       hour: 'numeric',
       minute: '2-digit'
-    })
+    }).toLowerCase()
   }
 
   return (
@@ -123,7 +123,7 @@ export default function CommentSection({ date }: { date: string }) {
                   {comment.username}
                 </span>
                 <span className="text-xs text-zinc-500">
-                  {formatTimestamp(comment.timestamp)}
+                  {formatTimestamp(comment.created_at)}
                 </span>
               </div>
               <p className="text-sm text-zinc-700 whitespace-pre-wrap">

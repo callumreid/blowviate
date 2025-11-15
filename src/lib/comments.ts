@@ -1,36 +1,26 @@
-import fs from 'fs'
-import path from 'path'
-
-const COMMENTS_DIR = path.join(process.cwd(), 'content/comments')
+import { supabase } from './supabase'
 
 export interface Comment {
   id: string
-  dailyDate: string
+  daily_date: string
   username: string
   content: string
-  timestamp: string
-}
-
-function ensureCommentsDir() {
-  if (!fs.existsSync(COMMENTS_DIR)) {
-    fs.mkdirSync(COMMENTS_DIR, { recursive: true })
-  }
-}
-
-function getCommentsFilePath(dailyDate: string): string {
-  return path.join(COMMENTS_DIR, `${dailyDate}.json`)
+  created_at: string
 }
 
 export async function getComments(dailyDate: string): Promise<Comment[]> {
-  ensureCommentsDir()
-  const filePath = getCommentsFilePath(dailyDate)
+  const { data, error } = await supabase
+    .from('comments')
+    .select('*')
+    .eq('daily_date', dailyDate)
+    .order('created_at', { ascending: true })
   
-  if (!fs.existsSync(filePath)) {
+  if (error) {
+    console.error('Error fetching comments:', error)
     return []
   }
   
-  const data = fs.readFileSync(filePath, 'utf-8')
-  return JSON.parse(data)
+  return data || []
 }
 
 export async function addComment(
@@ -38,23 +28,21 @@ export async function addComment(
   username: string,
   content: string
 ): Promise<Comment> {
-  ensureCommentsDir()
-  const filePath = getCommentsFilePath(dailyDate)
+  const { data, error } = await supabase
+    .from('comments')
+    .insert({
+      daily_date: dailyDate,
+      username,
+      content
+    })
+    .select()
+    .single()
   
-  const comments = await getComments(dailyDate)
-  
-  const newComment: Comment = {
-    id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-    dailyDate,
-    username,
-    content,
-    timestamp: new Date().toISOString()
+  if (error) {
+    console.error('Error adding comment:', error)
+    throw new Error('Failed to add comment')
   }
   
-  comments.push(newComment)
-  
-  fs.writeFileSync(filePath, JSON.stringify(comments, null, 2))
-  
-  return newComment
+  return data
 }
 
