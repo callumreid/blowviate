@@ -101,6 +101,30 @@ export default function Page() {
                       />
                     </>
                   )}
+                  {project.title === "Reverso" && (
+                    <>
+                      <img
+                        src="/hub/hubslurp.png"
+                        alt="hubslurp"
+                        className="w-6 h-6"
+                      />
+                      <img
+                        src="/hub/hubslurp.png"
+                        alt="hubslurp"
+                        className="w-6 h-6"
+                      />
+                      <img
+                        src="/hub/hubslurp.png"
+                        alt="hubslurp"
+                        className="w-6 h-6"
+                      />
+                      <img
+                        src="/hub/hubslurp.png"
+                        alt="hubslurp"
+                        className="w-6 h-6"
+                      />
+                    </>
+                  )}
                   {project.title === "Trollilopolis" && (
                     <img
                       src="/hub/trolly.png"
@@ -162,6 +186,30 @@ export default function Page() {
                       <img
                         src="/hub/orchard_kiwi.png"
                         alt="kiwi"
+                        className="w-6 h-6"
+                      />
+                    </>
+                  )}
+                  {project.title === "Reverso" && (
+                    <>
+                      <img
+                        src="/hub/hubslurp.png"
+                        alt="hubslurp"
+                        className="w-6 h-6"
+                      />
+                      <img
+                        src="/hub/hubslurp.png"
+                        alt="hubslurp"
+                        className="w-6 h-6"
+                      />
+                      <img
+                        src="/hub/hubslurp.png"
+                        alt="hubslurp"
+                        className="w-6 h-6"
+                      />
+                      <img
+                        src="/hub/hubslurp.png"
+                        alt="hubslurp"
                         className="w-6 h-6"
                       />
                     </>
