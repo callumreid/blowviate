@@ -13,7 +13,7 @@ export default function Page() {
       title: "Reverso",
       links: [
         { url: "https://github.com/callumreid/reverso", label: "github" },
-        { url: "https://reverso-mu.vercel.app/", label: "play" },
+        { url: "https://reverso.lol/", label: "play" },
       ],
       description:
         "reverso is a game where you say something, reverso that son of a gun, listen to that, then try and say the reverso, then listen to reverso-reverso and see if it sounds like original thing! 10% ownership by Cyrah",
