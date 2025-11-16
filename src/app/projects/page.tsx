@@ -10,6 +10,15 @@ export default function Page() {
         "play GameOrchard, a real-time voice-to-voice AI powered game where you try and teach the child what happens after death, talk your way out of a ticket, and stand up to a bully! the AI judge (God) determines whether your response is worthy",
     },
     {
+      title: "Reverso",
+      links: [
+        { url: "https://github.com/callumreid/reverso", label: "github" },
+        { url: "https://reverso-mu.vercel.app/", label: "play" },
+      ],
+      description:
+        "reverso is a game where you say something, reverso that son of a gun, listen to that, then try and say the reverso, then listen to reverso-reverso and see if it sounds like original thing! 10% ownership by Cyrah",
+    },
+    {
       title: "Trollilopolis",
       links: [{ url: "https://www.trollilopolis.com/", label: "play" }],
       description:
