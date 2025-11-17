@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -39,6 +40,7 @@ export default function RootLayout({
           <footer className="mt-16 text-center text-sm text-zinc-500">
             © {new Date().getFullYear()} Me
           </footer>
+          <Analytics />
         </div>
       </body>
     </html>
