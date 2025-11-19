@@ -91,6 +91,6 @@ Your commenting system should now work in production. Users can leave comments t
 ## Troubleshooting
 
 - **"Missing Supabase environment variables"**: Make sure `.env.local` exists locally and environment variables are set in Vercel
+- **"Could not resolve host" when hitting Supabase**: Supabase project URLs use the `.supabase.co` domain. If you copied `.supabase.com`, change it to `.supabase.co` locally and in Vercel.
 - **Comments not showing**: Check the Supabase Table Editor to see if comments are being saved
 - **Can't post comments**: Check the Supabase Logs (in dashboard) for any errors
-
