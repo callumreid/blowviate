@@ -50,7 +50,20 @@ export default function Page() {
     {
       title: "sayCast",
       links: [
+        {
+          url: "https://github.com/callumreid/sayCast/releases/tag/v0.1.0",
+          label: "download",
+        },
         { url: "https://github.com/callumreid/sayCast", label: "github" },
+        {
+          url: "brew tap callumreid/saycast",
+          label: "brew tap",
+        },
+        {
+          url: "brew install --cask saycast",
+          label: "brew install",
+        },
+        { url: "saycast", label: "saycast" },
       ],
       description:
         "sayCast enable voice-based navigation of your computer command it without the ridiculously steep learning curve of previous software solutions. hold down a hotkey and use Wispr Voice-to-Text combined with a series of pre-built scripts (or add your own!) to control window management, open apps, set off processes in your terminal, and many moooooore!",
