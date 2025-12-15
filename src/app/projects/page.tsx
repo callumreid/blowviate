@@ -1,4 +1,42 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
+const KONAMI_CODE = [
+  "ArrowUp",
+  "ArrowUp",
+  "ArrowDown",
+  "ArrowDown",
+  "ArrowLeft",
+  "ArrowRight",
+  "ArrowLeft",
+  "ArrowRight",
+  "KeyB",
+  "KeyA",
+];
+
 export default function Page() {
+  const [freakUnlocked, setFreakUnlocked] = useState(false);
+  const [konamiIndex, setKonamiIndex] = useState(0);
+
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.code === KONAMI_CODE[konamiIndex]) {
+        const next = konamiIndex + 1;
+        if (next === KONAMI_CODE.length) {
+          setFreakUnlocked(true);
+          setKonamiIndex(0);
+        } else {
+          setKonamiIndex(next);
+        }
+      } else {
+        setKonamiIndex(0);
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [konamiIndex]);
+
   const projects = [
     {
       title: "GameOrchard",
@@ -33,15 +71,6 @@ export default function Page() {
         "you know how pushing code all day to GitHub is fucking boring and terrible? well it doesn't have to be. with a quick `.zshrc` alias from the readme, set cows a sail every time that you push to remote in your terminal ! or just whenever you feel like it! easy install via Homebrew. pinky promise no malware",
     },
     {
-      title: "FreakGPT",
-      links: [
-        { url: "https://github.com/callumreid/freakgpt", label: "github" },
-        { url: "https://freakgpt.ai/", label: "visit" },
-      ],
-      description:
-        "ever wish ChatGPT was just a lil freakier? of course you did. well here ya go, pig",
-    },
-    {
       title: "What Are You?",
       links: [{ url: "https://what-are-you-nine.vercel.app/", label: "play" }],
       description:
@@ -70,6 +99,16 @@ export default function Page() {
       wip: true,
     },
   ];
+
+  const freakGPT = {
+    title: "FreakGPT",
+    links: [
+      { url: "https://github.com/callumreid/freakgpt", label: "github" },
+      { url: "https://freakgpt.ai/", label: "visit" },
+    ],
+    description:
+      "ever wish ChatGPT was just a lil freakier? of course you did. well here ya go, pig",
+  };
 
   return (
     <div className="space-y-8 text-center">
@@ -149,13 +188,6 @@ export default function Page() {
                     <img
                       src="/hub/henry_heiffer.png"
                       alt="henry"
-                      className="w-6 h-6"
-                    />
-                  )}
-                  {project.title === "FreakGPT" && (
-                    <img
-                      src="/hub/hubglaze.png"
-                      alt="glaze"
                       className="w-6 h-6"
                     />
                   )}
@@ -241,13 +273,6 @@ export default function Page() {
                       className="w-6 h-6"
                     />
                   )}
-                  {project.title === "FreakGPT" && (
-                    <img
-                      src="/hub/hubglaze.png"
-                      alt="glaze"
-                      className="w-6 h-6"
-                    />
-                  )}
                   {project.title === "What Are You?" && (
                     <img
                       src="/hub/fattyHubsInAmish.png"
@@ -286,6 +311,48 @@ export default function Page() {
             </div>
           </div>
         ))}
+
+        {freakUnlocked && (
+          <div className="relative rounded-lg border-2 border-red-900 bg-black p-6 text-center flex flex-col items-center overflow-hidden animate-[flicker_0.15s_ease-in-out_3]">
+            <div className="absolute inset-0 bg-gradient-to-b from-red-900/20 via-transparent to-red-900/30 pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(0,0,0,0.8)_100%)] pointer-events-none" />
+            <div className="relative flex flex-col items-center gap-4">
+              <div className="flex-1 w-full">
+                <h3 className="font-semibold text-red-500 flex items-center justify-center gap-2 flex-wrap animate-pulse">
+                  <img
+                    src="/hub/hubglaze.png"
+                    alt="glaze"
+                    className="w-6 h-6 saturate-0 brightness-75 hue-rotate-180"
+                  />
+                  <span className="tracking-widest" style={{ textShadow: "0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.5)" }}>
+                    {freakGPT.title}
+                  </span>
+                  <img
+                    src="/hub/hubglaze.png"
+                    alt="glaze"
+                    className="w-6 h-6 saturate-0 brightness-75 hue-rotate-180"
+                  />
+                </h3>
+                <p className="mt-2 text-sm text-red-400/80 italic">
+                  {freakGPT.description}
+                </p>
+              </div>
+            </div>
+            <div className="relative mt-3 flex flex-wrap gap-2">
+              {freakGPT.links.map((link) => (
+                <a
+                  key={link.url}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-red-600 hover:text-red-400 transition underline"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
